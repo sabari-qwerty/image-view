@@ -11,7 +11,7 @@ const handler = NextAuth({
         })
 
     ],
-    secret: process.env.NEXTAUTH_URL ?? ""
+    secret: process.env.NEXT_PUBLIC_SECRET ?? ""
 
 })
 
