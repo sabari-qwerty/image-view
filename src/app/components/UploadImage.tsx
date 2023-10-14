@@ -59,6 +59,7 @@ export const UploadImage = () => {
         }
       );
     }
+    setImageFile(null);
   };
 
   return (
