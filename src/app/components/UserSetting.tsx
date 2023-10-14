@@ -99,7 +99,7 @@ const UserSetting = () => {
       image: imageUrl ? imageUrl : useQueryGetUser.data?.data?.data?.picture,
     });
     queryClient.invalidateQueries({
-      queryKey: ["Getuser"],
+      queryKey: ["Getuser", "createuser"],
     });
   };
   return (
