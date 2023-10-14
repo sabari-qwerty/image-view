@@ -23,7 +23,7 @@ const AuthLayout: FC<AuthLayout> = ({ children }) => {
     );
 
   return (
-    <div className="w-[90%] mx-auto mt-4">
+    <div className="w-[90%] mx-auto mt-4 flex flex-col space-y-4">
       <NavcationBar />
       {children}
     </div>
