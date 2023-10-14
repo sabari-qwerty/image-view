@@ -1,7 +1,7 @@
-import { UserSetting } from "../components/UserSetting";
+import UserSetting from "../components/UserSetting";
 
 const page = () => {
-  <UserSetting />;
+  return <UserSetting />;
 };
 
 export default page;

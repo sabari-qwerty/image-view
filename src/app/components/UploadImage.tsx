@@ -3,9 +3,8 @@ import { FC, useState, ChangeEvent } from "react";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from "../../../firebaseConfig";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { notEqual } from "assert";
 
 export const UploadImage = () => {
   const [ImageFile, setImageFile] = useState<File | null>();
@@ -59,7 +58,6 @@ export const UploadImage = () => {
         }
       );
     }
-    setImageFile(null);
   };
 
   return (

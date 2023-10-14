@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { storage } from "../../../firebaseConfig";
 import Image from "next/image";
 
-export const UserSetting = () => {
+const UserSetting = () => {
   const { data } = useSession();
 
   const queryClient = useQueryClient();
@@ -104,7 +104,7 @@ export const UserSetting = () => {
   };
   return (
     <section>
-      <div className=" ">
+      <div className=" flex  flex-col">
         <label className="avatar group" htmlFor="file">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 relative">
             <img
@@ -196,13 +196,15 @@ export const UserSetting = () => {
 
       {(name != "0" || imageUrl) && (
         <button
-          className="btn btn-outline btn-success"
+          className="btn btn-outline btn-success mt-4"
           onClick={() => updateUer()}
         >
           Upload
         </button>
       )}
-      <pre>{JSON.stringify(useQueryGetUser.data?.data?.data)}</pre>
+      {/* <pre>{JSON.stringify(useQueryGetUser.data?.data?.data)}</pre> */}
     </section>
   );
 };
+
+export default UserSetting;
