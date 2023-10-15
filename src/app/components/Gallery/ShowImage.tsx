@@ -35,7 +35,12 @@ export const ShowImage: FC = () => {
         <>no image</>
       ) : (
         useQueryGetImage.data?.data?.data.map((data: data, key: number) => (
-          <img src={data.image_url} alt="data" key={key} />
+          <img
+            src={data.image_url}
+            alt="data"
+            key={key}
+            className="w-28 h-28 object-contain"
+          />
         ))
       )}
     </main>
