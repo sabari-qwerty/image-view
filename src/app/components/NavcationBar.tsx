@@ -18,7 +18,9 @@ export const NavcationBar: FC = () => {
   return (
     <div className="navbar bg-base-200 rounded-xl">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">ImaGe</a>
+        <Link href={"/"} className="btn btn-ghost normal-case text-xl">
+          ImaGe
+        </Link>
       </div>
       <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">

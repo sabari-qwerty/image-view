@@ -23,7 +23,7 @@ export const AdminPage: FC = () => {
   });
 
   return (
-    <div className="">
+    <div className=" flex flex-wrap gap-5">
       {useQueryGetAllUser.data?.data?.data &&
         [...useQueryGetAllUser.data?.data?.data].map(
           (data: data, key: number) => (
@@ -33,7 +33,7 @@ export const AdminPage: FC = () => {
               className="card w-96 bg-base-100 shadow-xl"
             >
               <figure>
-                <img src={data.picture} alt="Shoes" />
+                <img src={data.picture} alt="Shoes" className="w-full " />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{data.name}!</h2>

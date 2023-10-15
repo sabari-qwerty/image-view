@@ -39,7 +39,7 @@ export const ShowImage: FC = () => {
             src={data.image_url}
             alt="data"
             key={key}
-            className="w-28 h-28 object-contain"
+            className=" w-[200px] object-cover "
           />
         ))
       )}
