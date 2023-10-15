@@ -5,11 +5,15 @@ import { storage } from "../../../firebaseConfig";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 
 export const UploadImage = () => {
+  const { data } = useSession();
+
   const [ImageFile, setImageFile] = useState<File | null>();
 
-  const [downloadUrl, setDownloadUrl] = useState("");
+  // const [downloadUrl, setDownloadUrl] = useState("");
 
   const uploadFile = () => toast("uploading process");
 
@@ -27,7 +31,7 @@ export const UploadImage = () => {
     }
   };
 
-  const handleUploadFile = () => {
+  const handleUploadFile = async () => {
     if (ImageFile) {
       const name = ImageFile.name;
       const storageRef = ref(storage, `image/${name}`);
@@ -51,9 +55,15 @@ export const UploadImage = () => {
           toast(err.message);
         },
         () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
+            await axios.post("/api/image/upload", {
+              email: data?.user?.email,
+              image: url,
+            });
+            setImageFile(null);
+
             uploadFile();
-            console.log(url);
+            // console.log(url);
           });
         }
       );

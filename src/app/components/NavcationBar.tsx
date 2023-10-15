@@ -34,13 +34,17 @@ export const NavcationBar: FC = () => {
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link href={"/"} className="justify-between">
+              <Link href={"/admin"}>admin</Link>
+            </li>
+            <li>
+              <Link href={"/gallery"} className="justify-between">
                 Gallery
               </Link>
             </li>
             <li>
               <Link href={"/setting"}>Settings</Link>
             </li>
+
             <li>
               <button onClick={() => signOut()}>SignOut</button>
             </li>
