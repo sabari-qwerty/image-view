@@ -3,7 +3,7 @@ import { FC } from "react";
 import { usePathname } from "next/navigation";
 import axios from "axios";
 import { constants } from "buffer";
-import { useQuery } from "@tanstack/react-query";
+import { QueryClient, useQuery } from "@tanstack/react-query";
 
 interface data {
   id: string;
@@ -25,9 +25,16 @@ export const ShowImage: FC = () => {
     queryFn: () => getAllImage(),
   });
 
-  console.log(useQueryGetImage.data?.data?.data.length);
+  const querCliet = new QueryClient();
+
+  // console.log(useQueryGetImage.data?.data?.data.length);
 
   if (useQueryGetImage.isLoading) return <>Loading</>;
+
+  const DelteImage = async (id: string) => {
+    await axios.delete(`/api/image/delete?id=${id}`);
+    querCliet.invalidateQueries(["GetAllImage"]);
+  };
 
   return (
     <main className="flex flex-wrap gap-5">
@@ -35,12 +42,26 @@ export const ShowImage: FC = () => {
         <>no image</>
       ) : (
         useQueryGetImage.data?.data?.data.map((data: data, key: number) => (
-          <img
-            src={data.image_url}
-            alt="data"
+          <div
+            className="card w-fit h-fit bg-base-100 shadow-xl group relative"
             key={key}
-            className=" w-[200px] object-cover "
-          />
+          >
+            <figure>
+              <img
+                src={data.image_url}
+                alt="Shoes"
+                className="w-[200px] h-fit object-cover"
+              />
+            </figure>
+            <div className="w-full h-full absolute top-0 invisible  group-hover:visible bg-[#00000041] flex justify-center items-center ">
+              <button
+                className="btn btn-error text-white"
+                onClick={() => DelteImage(data.id)}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
         ))
       )}
     </main>
